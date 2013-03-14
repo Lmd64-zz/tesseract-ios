@@ -113,7 +113,10 @@ namespace tesseract {
 
 - (NSString *)recognizedText {
     char* utf8Text = _tesseract->GetUTF8Text();
-    return [NSString stringWithUTF8String:utf8Text];
+    if (utf8Text != NULL)
+        return [NSString stringWithUTF8String:utf8Text];
+    else
+        return nil;
 }
 
 - (void)setImage:(UIImage *)image
